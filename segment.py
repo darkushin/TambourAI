@@ -2,6 +2,7 @@ import numpy as np
 import cv2 as cv
 from matplotlib import pyplot as plt
 from white_balance import grayworld_wb
+from patchify import patchify
 
 # img = cv.imread('data/0874D.jpg')
 # img = cv.imread('data/wall_0940P_bed_frame_0267P.jpg')
@@ -59,10 +60,18 @@ def segment(img):
 
 
 def get_patches(img, markers):
-    bg = img[markers == markers.max()]
+    # bg = img[markers == markers.max()]
+    patches = []
+    bg_idx = np.argwhere(markers == markers.max())
+    for i in bg_idx:
+        k, j = i
+        patch = img[k:k+16, j: j+16]
+        patches.append(patch)
+    return np.random.choice(patches, size=1000)
 
 
 if __name__ == "__main__":
     # img = cv.imread('data/wall_0940P_bed_frame_0267P.jpg')
     image = plt.imread('data\\0129T.jpg') / 255
-    segment(grayworld_wb(image))
+    img, markers = segment(grayworld_wb(image))
+    get_patches(img, markers)
