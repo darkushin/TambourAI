@@ -34,31 +34,31 @@ def groundtruth_wb(image: np.ndarray, white_patch: np.ndarray):
 
 if __name__ == '__main__':
     import matplotlib.pyplot as plt
-    image = plt.imread('data\\0408P.jpg')/255
+    image = plt.imread('data\\0954P.jpg')/255
 
-    plt.figure()
-    plt.imshow(image)
-    plt.title('original')
-    plt.axis('off')
+    # plt.figure()
+    # plt.imshow(image)
+    # plt.title('original')
+    # plt.axis('off')
 
     plt.figure()
     plt.imshow(grayworld_wb(image))
     plt.title('grayworld')
     plt.axis('off')
-
-    plt.figure()
-    plt.imshow(quantile_wb(image, .97))
-    plt.title('quantile .97')
-    plt.axis('off')
-
-    plt.figure()
-    plt.imshow(quantile_wb(image, .999))
-    plt.title('quantile .999')
-    plt.axis('off')
-
-    plt.figure()
-    plt.imshow(groundtruth_wb(image, image[:10, :10]))
-    plt.title('groundtruth')
-    plt.axis('off')
+    #
+    # plt.figure()
+    # plt.imshow(quantile_wb(image, .97))
+    # plt.title('quantile .97')
+    # plt.axis('off')
+    #
+    # plt.figure()
+    # plt.imshow(quantile_wb(image, .999))
+    # plt.title('quantile .999')
+    # plt.axis('off')
+    #
+    # plt.figure()
+    # plt.imshow(groundtruth_wb(image, image[:10, :10]))
+    # plt.title('groundtruth')
+    # plt.axis('off')
 
     plt.show()
